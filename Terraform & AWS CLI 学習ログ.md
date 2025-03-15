@@ -162,7 +162,9 @@ resource "aws_instance" "my_ec2" {
 }
 
 ✅ VPCは10.0.0.0/16にして、将来の拡張性を考慮
+
 ✅ サブネットは10.0.1.0/24にして、適切なIP範囲を確保
+
 ✅ EC2はAmazon Linux 2で構築し、サブネット内に配置
 
 4. Terraformの実行
@@ -195,5 +197,7 @@ terraform destroy  # 削除
 🔥 まとめ
 
 ✅ Terraform & AWS CLIのインストール方法を整理！
+
 ✅ Terraformで .tf ファイルを作成する手順を理解！
+
 ✅ リソースの詳細な説明を加え、ネットワーク設計の意図を明確化！
