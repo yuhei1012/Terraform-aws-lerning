@@ -46,6 +46,8 @@ git push -u origin main
 
 ❌ Invalid username or password エラー
 
+![img](Terraform学習ログ/git_パスワード認証不可.png)
+
 原因: HTTPS経由の認証にはPersonal Access Tokenが必要
 
 対処法: GitHubの「Developer Settings」→「Personal Access Tokens」からトークンを発行し、パスワードの代わりに使用
