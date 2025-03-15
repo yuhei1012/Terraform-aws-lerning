@@ -163,7 +163,12 @@ resource "aws_instance" "my_ec2" {
 
 4. Terraformの実行
 
+####  実行前にリソース確認
+![img](Terraform学習ログ/Terraformで作成する内容確認.png)
+
 AWS上にTerraformでインフラを自動構築します。
+問題なければyesを入力する。
+enterやyでは作成されない。
 
 #### tfファイル作成・実行成功
 ![img](Terraform学習ログ/Terraformインストール後.png)
