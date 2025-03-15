@@ -122,6 +122,10 @@ AWS CLI公式サイト からWindows用のインストーラーをダウンロ�
 
 Terraformの設定ファイル .tf を作成してAWSリソースを管理します。
 
+
+#### aws-cliインストール後
+![img](Terraform学習ログ/aws-cliインストール後.png)
+
 📌 1️⃣ Terraformの作業ディレクトリを作成
 
 mkdir terraform-aws
@@ -190,4 +194,6 @@ terraform destroy  # 削除
 この時はVPCがないのにec2を作成しようとしたため
 🔥 まとめ
 
-✅ Terraform & AWS CLIのインストール方法を整理！✅ Terraformで .tf ファイルを作成する手順を理解！✅ リソースの詳細な説明を加え、ネットワーク設計の意図を明確化！
+✅ Terraform & AWS CLIのインストール方法を整理！
+✅ Terraformで .tf ファイルを作成する手順を理解！
+✅ リソースの詳細な説明を加え、ネットワーク設計の意図を明確化！
