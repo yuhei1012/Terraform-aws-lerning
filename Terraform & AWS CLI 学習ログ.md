@@ -182,6 +182,12 @@ terraform destroy  # 削除
 
 #### リソース作成成功 VPC,subnet,ec2
 ![img](Terraform学習ログ/Terraform成功_vpc_subnet_ec2.png)
+
+
+
+#### リソース作成失敗
+![img](Terraform学習ログ/Terrarom_EC2失敗.png)
+この時はVPCがないのにec2を作成しようとしたため
 🔥 まとめ
 
 ✅ Terraform & AWS CLIのインストール方法を整理！✅ Terraformで .tf ファイルを作成する手順を理解！✅ リソースの詳細な説明を加え、ネットワーク設計の意図を明確化！
