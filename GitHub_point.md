@@ -43,6 +43,9 @@ git push -u origin main
 GitHubにリポジトリを作成していなかった↓
 ![img](Terraform学習ログ/git_リポジトリなし２.png)
 
+ リポジトリー名間違い↓
+![img](Terraform学習ログ/git_リポジトリ名間違いエラー.png)
+
 原因: GitHubにリポジトリを作成していなかった / URLが間違っていた
 
 対処法: GitHubでリポジトリを作成し、URLを確認して git remote set-url で修正
