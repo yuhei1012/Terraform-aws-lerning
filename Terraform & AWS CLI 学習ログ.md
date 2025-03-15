@@ -1,6 +1,7 @@
 1. Terraformのインストール
 
-Terraformを使うには、まずTerraform本体をインストールする必要があります。 環境（Mac / Windows）によってインストール方法が異なるので、それぞれ解説します。
+Terraformを使うには、まずTerraform本体をインストールする必要があります。
+環境（Mac / Windows）によってインストール方法が異なるので、それぞれ解説します。
 
 ✅ MacでのTerraformインストール
 
@@ -57,9 +58,9 @@ Windowsでも、次の2つの方法があります。
 
 Terraform公式サイト からWindows用のZIPをダウンロード
 
-ZIPを展開し、terraform.exe を ``** に移動**
+ZIPを展開し、terraform.exe を C:\Program Files\Terraform\ に移動
 
-C:\Program Files\Terraform\ を 環境変数 `` に追加
+C:\Program Files\Terraform\ を 環境変数 PATH に追加
 
 コマンドプロンプトで terraform -version を実行し、インストール確認
 
@@ -72,7 +73,8 @@ terraform -version
 
 2. AWS CLI のインストール
 
-TerraformでAWSを操作するには、AWS CLIが必要です。 AWS CLIは、AWSとやり取りするためのコマンドラインツールです。
+TerraformでAWSを操作するには、AWS CLIが必要です。
+AWS CLIは、AWSとやり取りするためのコマンドラインツールです。
 
 ✅ MacでのAWS CLIインストール
 
@@ -116,7 +118,50 @@ AWS CLI公式サイト からWindows用のインストーラーをダウンロ�
 
 コマンドプロンプトで aws --version を実行し、インストール確認
 
-3. Terraformで VPC, Subnet, EC2 を作成
+3. Terraformで .tf ファイルを作成
+
+Terraformの設定ファイル .tf を作成してAWSリソースを管理します。
+
+📌 1️⃣ Terraformの作業ディレクトリを作成
+
+mkdir terraform-aws
+cd terraform-aws
+
+✅ 作業ディレクトリを作成し、移動する
+
+📌 2️⃣ main.tf を作成
+
+touch main.tf
+vim main.tf
+
+✅ 空の main.tf を作成し、編集する
+
+📌 3️⃣ main.tf にAWSリソースを記述
+
+provider "aws" {
+  region = "ap-northeast-1"
+}
+
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"  # 大規模ネットワークを確保
+}
+
+resource "aws_subnet" "my_subnet" {
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.1.0/24"  # 256IPアドレスのサブネット
+}
+
+resource "aws_instance" "my_ec2" {
+  ami           = "ami-0c3fd0f5d33134a76"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.my_subnet.id
+}
+
+✅ VPCは10.0.0.0/16にして、将来の拡張性を考慮
+✅ サブネットは10.0.1.0/24にして、適切なIP範囲を確保
+✅ EC2はAmazon Linux 2で構築し、サブネット内に配置
+
+4. Terraformの実行
 
 AWS上にTerraformでインフラを自動構築します。
 
@@ -127,33 +172,6 @@ terraform plan   # 変更内容を確認
 terraform apply  # AWSにリソースを作成
 terraform destroy  # 削除
 
-📌 TerraformでVPC & サブネットを作成
-
-resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_subnet" "my_subnet" {
-  vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.1.0/24"
-}
-
-✅ VPCを `` にした理由
-
-大きなネットワークを確保するため
-
-サブネットを `` にすることで、256個のIPアドレスを確保
-
-📌 TerraformでEC2を作成
-
-resource "aws_instance" "my_ec2" {
-  ami           = "ami-0c3fd0f5d33134a76"
-  instance_type = "t2.micro"
-  subnet_id     = aws_subnet.my_subnet.id
-}
-
-✅ サブネット `` にEC2を配置
-
 🔥 まとめ
 
-✅ Terraform & AWS CLIのインストール方法を整理！✅ TerraformでVPC, Subnet, EC2を作成する手順を理解！✅ なぜそのネットワーク帯域を設定したのか？を説明できるようになった！
+✅ Terraform & AWS CLIのインストール方法を整理！✅ Terraformで .tf ファイルを作成する手順を理解！✅ リソースの詳細な説明を加え、ネットワーク設計の意図を明確化！
