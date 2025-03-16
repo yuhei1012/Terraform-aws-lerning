@@ -129,6 +129,7 @@ Terraformの設定ファイル .tf を作成してAWSリソースを管理しま
 📌 1️⃣ Terraformの作業ディレクトリを作成
 
 mkdir terraform-aws
+
 cd terraform-aws
 
 ✅ 作業ディレクトリを作成し、移動する
@@ -136,6 +137,7 @@ cd terraform-aws
 📌 2️⃣ main.tf を作成
 
 touch main.tf
+
 vim main.tf
 
 ✅ 空の main.tf を作成し、編集する
@@ -182,8 +184,11 @@ enterやyでは作成されない。
 📌 使用したコマンド
 
 terraform init   # 初期化
+
 terraform plan   # 変更内容を確認
+
 terraform apply  # AWSにリソースを作成
+
 terraform destroy  # 削除
 
 #### リソース作成成功 VPC,subnet,ec2
